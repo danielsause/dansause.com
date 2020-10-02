@@ -35,10 +35,12 @@ SELECT language.language AS "First Language"
 GROUP BY language.language 
 ORDER BY count(language.language) DESC LIMIT 1;
 ```
+```
  First Language 
 ----------------
  JAVA
 (1 row)
+```
 ```
 SELECT language.language, skill.value, count(language.language) 
   FROM standup.language language 
