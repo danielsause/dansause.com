@@ -141,4 +141,5 @@ ORDER BY userlang.student_id;
 |         38 | JAVA       | C |
 |         39 | JAVA       | C++ |
 |         40 | JAVA       | OTHER |
+
 (40 rows) 
