@@ -1,45 +1,45 @@
-#Exercise 3 - Standup
-##Daniel Sause 2020-10-02
+# Exercise 3 - Standup
+## Daniel Sause 2020-10-02
 
-##Setup
+## Setup
 
-###run mysql:
+### run mysql:
 mysql -u root -p 
 (then enter your password)
 
-###run the script to create mysql database:
+### run the script to create mysql database:
 \. /home/student/Desktop/standup.sql
 
-###create database in postgresql:
+### create database in postgresql:
 createdb standup
 
-##convert mysql database to postgresql database:
+## convert mysql database to postgresql database:
 
-###install pgloader:
+### install pgloader:
 sudo apt install pgloader
 
-###verify it installed:
+### verify it installed:
 pgloader --version
 
-###convert:
+### convert:
 pgloader mysql://root:student@localhost/standup pgsql:///standup
 
-###Open the database in psql:
+### Open the database in psql:
 psql -d standup
 
-##Run your queries!
-
+## Run your queries!
+```
 SELECT language.language AS "First Language" 
   FROM standup.language language 
     JOIN standup.userlang userlang on userlang.language_id = language.language_id 
 GROUP BY language.language 
 ORDER BY count(language.language) DESC LIMIT 1;
-
+```
  First Language 
 ----------------
  JAVA
 (1 row)
-
+```
 SELECT language.language, skill.value, count(language.language) 
   FROM standup.language language 
     JOIN standup.userlang userlang ON userlang.language_id = language.language_id 
@@ -53,7 +53,7 @@ ORDER BY language.language,
     THEN 3 WHEN 'HIGH' 
     THEN 4 
 END DESC;
-
+```
   language  |   value   | count 
 ------------+-----------+-------
  C          | HIGH      |     1
@@ -81,7 +81,7 @@ END DESC;
  PYTHON     | LOW       |     2
 (23 rows)
 
-
+```
 SELECT userlang.student_id,
   MAX(CASE
     WHEN skill.VALUE = 'HIGH' THEN language.language
@@ -94,7 +94,7 @@ FROM standup.userlang userlang
   JOIN standup.skill skill ON skill.value IN ('HIGH', 'MEDIUM') AND skill.skill_id = userlang.skill_level
 GROUP BY userlang.student_id 
 ORDER BY userlang.student_id;
-
+```
 
  student_id |    HIGH    |   MEDIUM   
 ------------+------------+------------
