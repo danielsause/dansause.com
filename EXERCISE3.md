@@ -4,44 +4,68 @@
 ## Setup
 
 ### run mysql:
-```mysql -u root -p ```
+
+```
+mysql -u root -p 
+```
+
 (then enter your password)
 
 ### run the script to create mysql database:
-```\. /home/student/Desktop/standup.sql```
+
+```
+\. /home/student/Desktop/standup.sql
+```
 
 ### create database in postgresql:
-```createdb standup```
+
+```
+createdb standup
+```
 
 ## convert mysql database to postgresql database:
 
 ### install pgloader:
-```sudo apt install pgloader```
+
+```
+sudo apt install pgloader
+```
 
 ### verify it installed:
-```pgloader --version```
+
+```
+pgloader --version
+```
 
 ### convert:
-```pgloader mysql://root:student@localhost/standup pgsql:///standup```
+
+```
+pgloader mysql://root:student@localhost/standup pgsql:///standup
+```
 
 ### Open the database in psql:
-```psql -d standup```
+
+```
+psql -d standup
+```
 
 ## Run your queries!
-```
+
+```sql
 SELECT language.language AS "First Language" 
   FROM standup.language language 
     JOIN standup.userlang userlang on userlang.language_id = language.language_id 
 GROUP BY language.language 
 ORDER BY count(language.language) DESC LIMIT 1;
 ```
-```
- First Language 
-----------------
- JAVA
+
+| First Language |
+|----------------|
+| JAVA |
+
 (1 row)
-```
-```
+
+```sql
 SELECT language.language, skill.value, count(language.language) 
   FROM standup.language language 
     JOIN standup.userlang userlang ON userlang.language_id = language.language_id 
@@ -56,6 +80,7 @@ ORDER BY language.language,
     THEN 4 
 END DESC;
 ```
+
 |  language  |   value   | count |
 |------------|-----------|-------|
 | C          | HIGH      |     1 |
@@ -84,7 +109,7 @@ END DESC;
  
 (23 rows)
 
-```
+```sql
 SELECT userlang.student_id,
   MAX(CASE
     WHEN skill.VALUE = 'HIGH' THEN language.language
