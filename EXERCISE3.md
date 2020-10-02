@@ -4,28 +4,28 @@
 ## Setup
 
 ### run mysql:
-mysql -u root -p 
+```mysql -u root -p ```
 (then enter your password)
 
 ### run the script to create mysql database:
-\. /home/student/Desktop/standup.sql
+```\. /home/student/Desktop/standup.sql```
 
 ### create database in postgresql:
-createdb standup
+```createdb standup```
 
 ## convert mysql database to postgresql database:
 
 ### install pgloader:
-sudo apt install pgloader
+```sudo apt install pgloader```
 
 ### verify it installed:
-pgloader --version
+```pgloader --version```
 
 ### convert:
-pgloader mysql://root:student@localhost/standup pgsql:///standup
+```pgloader mysql://root:student@localhost/standup pgsql:///standup```
 
 ### Open the database in psql:
-psql -d standup
+```psql -d standup```
 
 ## Run your queries!
 ```
@@ -57,7 +57,7 @@ ORDER BY language.language,
 END DESC;
 ```
   language  |   value   | count 
-------------+-----------+-------
+------------|-----------|-------
  C          | HIGH      |     1
  C          | MEDIUM    |     2
  C          | LOW       |     7
@@ -99,7 +99,7 @@ ORDER BY userlang.student_id;
 ```
 
  student_id |    HIGH    |   MEDIUM   
-------------+------------+------------
+------------|------------|------------
           1 | JAVA       | C++
           2 | JAVA       | C++
           3 | JAVA       | C++
