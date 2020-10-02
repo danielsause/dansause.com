@@ -81,6 +81,7 @@ END DESC;
  PYTHON     | HIGH      |     1
  PYTHON     | MEDIUM    |     1
  PYTHON     | LOW       |     2
+ 
 (23 rows)
 
 ```
