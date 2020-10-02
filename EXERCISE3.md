@@ -99,7 +99,7 @@ ORDER BY userlang.student_id;
 ```
 
  student_id |    HIGH    |   MEDIUM   
-------------|------------|------------
+------------|------------|---------
           1 | JAVA       | C++
           2 | JAVA       | C++
           3 | JAVA       | C++
